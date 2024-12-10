@@ -1,5 +1,5 @@
-require 'hanami/utils/class'
-require 'hanami/utils/string'
+require 'hanami/cyg_utils/class'
+require 'hanami/cyg_utils/string'
 require 'hanami/routing/error'
 
 module Hanami
@@ -50,8 +50,8 @@ module Hanami
         def self.require_parser(parser)
           require "hanami/routing/parsing/#{ parser }_parser"
 
-          parser = Utils::String.classify(parser)
-          Utils::Class.load!("Hanami::Routing::Parsing::#{ parser }Parser").new
+          parser = CygUtils::String.classify(parser)
+          CygUtils::Class.load!("Hanami::Routing::Parsing::#{ parser }Parser").new
         rescue LoadError, NameError
           raise UnknownParserError.new(parser)
         end

@@ -1,5 +1,5 @@
 require 'hanami/routing/parsing/parser'
-require 'hanami/utils/hash'
+require 'hanami/cyg_utils/hash'
 
 module Hanami
   module Routing
@@ -83,7 +83,7 @@ module Hanami
       # @api private
       def _symbolize(body)
         if body.is_a?(Hash)
-          Utils::Hash.deep_symbolize(body)
+          CygUtils::Hash.deep_symbolize(body)
         else
           { FALLBACK_KEY => body }
         end

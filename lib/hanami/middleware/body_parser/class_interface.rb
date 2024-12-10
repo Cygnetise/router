@@ -1,5 +1,5 @@
-require 'hanami/utils/class'
-require 'hanami/utils/string'
+require 'hanami/cyg_utils/class'
+require 'hanami/cyg_utils/string'
 require_relative 'errors'
 
  module Hanami
@@ -45,8 +45,8 @@ require_relative 'errors'
          def require_parser(parser)
            require "hanami/middleware/body_parser/#{parser}_parser"
 
-           parser = Utils::String.classify(parser)
-           Utils::Class.load!("Hanami::Middleware::BodyParser::#{parser}Parser").new
+           parser = CygUtils::String.classify(parser)
+           CygUtils::Class.load!("Hanami::Middleware::BodyParser::#{parser}Parser").new
          rescue LoadError, NameError
            raise UnknownParserError.new(parser)
          end

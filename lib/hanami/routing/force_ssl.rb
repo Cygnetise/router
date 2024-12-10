@@ -1,5 +1,5 @@
 require 'rack/request'
-require 'hanami/utils/deprecation'
+require 'hanami/cyg_utils/deprecation'
 
 module Hanami
   module Routing
@@ -177,7 +177,7 @@ module Hanami
       def _redefine_call
         return unless @active
 
-        Hanami::Utils::Deprecation.new('force_ssl option is deprecated, please delegate this behaviour to Nginx/Apache or use a Rack middleware like `rack-ssl`')
+        Hanami::CygUtils::Deprecation.new('force_ssl option is deprecated, please delegate this behaviour to Nginx/Apache or use a Rack middleware like `rack-ssl`')
 
         define_singleton_method :call do |env|
           [redirect_code(env), { LOCATION_HEADER => full_url(env) }, EMPTY_BODY] if force?(env)

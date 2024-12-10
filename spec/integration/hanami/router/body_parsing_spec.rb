@@ -37,7 +37,7 @@ RSpec.describe 'Body parsing' do
     expect(response.body).to eq(%({"_"=>["alpha", "beta"], :id=>"23"}))
   end
 
-  # See https://github.com/hanami/utils/issues/169
+  # See https://github.com/hanami/cyg_utils/issues/169
   it 'does not eval untrusted input' do
     body     = StringIO.new(%({"json_class": "Foo"}).encode(Encoding::ASCII_8BIT))
     response = @app.patch('/books/23', 'CONTENT_TYPE' => 'application/json', 'rack.input' => body, lint: true)

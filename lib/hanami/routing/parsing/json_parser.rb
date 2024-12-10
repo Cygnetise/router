@@ -1,4 +1,4 @@
-require 'hanami/utils/json'
+require 'hanami/cyg_utils/json'
 
 module Hanami
   module Routing
@@ -23,8 +23,8 @@ module Hanami
         # @since 0.2.0
         # @api private
         def parse(body)
-          Hanami::Utils::Json.parse(body)
-        rescue Hanami::Utils::Json::ParserError => e
+          Hanami::CygUtils::Json.parse(body)
+        rescue Hanami::CygUtils::Json::ParserError => e
           raise BodyParsingError.new(e.message)
         end
       end

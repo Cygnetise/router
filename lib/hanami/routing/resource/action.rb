@@ -1,6 +1,6 @@
-require 'hanami/utils/string'
-require 'hanami/utils/path_prefix'
-require 'hanami/utils/class_attribute'
+require 'hanami/cyg_utils/string'
+require 'hanami/cyg_utils/path_prefix'
+require 'hanami/cyg_utils/class_attribute'
 require 'hanami/routing/resource/nested'
 
 module Hanami
@@ -14,7 +14,7 @@ module Hanami
       #
       # @see Hanami::Router#resource
       class Action
-        include Utils::ClassAttribute
+        include CygUtils::ClassAttribute
 
         # Nested routes separator
         #
@@ -110,7 +110,7 @@ module Hanami
         # @api private
         # @since 0.2.0
         def namespace
-          @namespace ||= Utils::PathPrefix.new @options[:namespace]
+          @namespace ||= CygUtils::PathPrefix.new @options[:namespace]
         end
 
         private
@@ -125,7 +125,7 @@ module Hanami
         # @api private
         # @since 0.1.0
         def self.class_for(action)
-          Utils::Class.load!(Utils::String.classify(action), namespace)
+          CygUtils::Class.load!(CygUtils::String.classify(action), namespace)
         end
 
         # Accepted HTTP verb
@@ -205,7 +205,7 @@ module Hanami
         # @api private
         # @since 0.1.0
         def action_name
-          Utils::String.transform(self.class.name, :demodulize, :downcase)
+          CygUtils::String.transform(self.class.name, :demodulize, :downcase)
         end
 
         # A string that represents the endpoint to be loaded.
@@ -260,7 +260,7 @@ module Hanami
         def _singularized_as
           name = @options[:as] ? @options[:as].to_s : resource_name
           name.split(NESTED_ROUTES_SEPARATOR).map do |n|
-            Hanami::Utils::String.singularize(n)
+            Hanami::CygUtils::String.singularize(n)
           end
         end
 
@@ -291,7 +291,7 @@ module Hanami
         # @api private
         def method_missing(m, *args)
           verb        = m
-          action_name = Utils::PathPrefix.new(args.first).relative_join(nil)
+          action_name = CygUtils::PathPrefix.new(args.first).relative_join(nil)
 
           @router.__send__ verb, path(action_name),
             to: endpoint(action_name), as: as(action_name)

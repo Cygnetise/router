@@ -1,5 +1,5 @@
 require 'delegate'
-require 'hanami/utils/path_prefix'
+require 'hanami/cyg_utils/path_prefix'
 
 module Hanami
   module Routing
@@ -16,7 +16,7 @@ module Hanami
       # @since 0.1.0
       def initialize(router, name, &blk)
         @router = router
-        @name   = Utils::PathPrefix.new(name)
+        @name   = CygUtils::PathPrefix.new(name)
         __setobj__(@router)
         instance_eval(&blk)
       end
