@@ -1,6 +1,6 @@
 require 'delegate'
 require 'hanami/routing/error'
-require 'hanami/utils/class'
+require 'hanami/cyg_utils/class'
 
 module Hanami
   module Routing
@@ -165,7 +165,7 @@ module Hanami
       # @since 0.2.0
       # @api private
       def klass
-        Utils::Class.load!(@name, @namespace)
+        CygUtils::Class.load!(@name, @namespace)
       rescue NameError => e
         raise EndpointNotFound.new(e.message)
       end

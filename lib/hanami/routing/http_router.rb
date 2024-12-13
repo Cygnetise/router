@@ -5,7 +5,7 @@ require 'hanami/routing/route'
 require 'hanami/routing/parsers'
 require 'hanami/routing/force_ssl'
 require 'hanami/routing/error'
-require 'hanami/utils/path_prefix'
+require 'hanami/cyg_utils/path_prefix'
 require 'hanami/routing/http_router_monkey_patch'
 
 module Hanami
@@ -69,7 +69,7 @@ module Hanami
       def initialize(options = {}, &blk)
         if options[:parsers]
           depecration_message = 'Hanami::Router options[:parsers] is deprecated and it will be removed in future versions'
-          Hanami::Utils::Deprecation.new(depecration_message)
+          Hanami::CygUtils::Deprecation.new(depecration_message)
         end
         @compiled         = false
         @uri_parser       = URI::Parser.new
@@ -82,7 +82,7 @@ module Hanami
         @route_class      = options[:route]    || Routing::Route
         @resolver         = options[:resolver] || Routing::EndpointResolver.new(options)
         @parsers          = Routing::Parsers.new(options[:parsers])
-        @prefix           = Utils::PathPrefix.new(options[:prefix] || '')
+        @prefix           = CygUtils::PathPrefix.new(options[:prefix] || '')
         @force_ssl        = Hanami::Routing::ForceSsl.new(!!options[:force_ssl], host: @default_host, port: @default_port)
       end
 

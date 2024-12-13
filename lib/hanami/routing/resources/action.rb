@@ -1,5 +1,5 @@
-require 'hanami/utils/string'
-require 'hanami/utils/path_prefix'
+require 'hanami/cyg_utils/string'
+require 'hanami/cyg_utils/path_prefix'
 require 'hanami/routing/resource'
 
 module Hanami
@@ -38,7 +38,7 @@ module Hanami
         # @api private
         # @since 0.4.0
         def as
-          Hanami::Utils::String.pluralize(super)
+          Hanami::CygUtils::String.pluralize(super)
         end
       end
 
@@ -50,7 +50,7 @@ module Hanami
       # @see Hanami::Router#resources
       class CollectionAction < Resource::CollectionAction
         def as(action_name)
-          Hanami::Utils::String.pluralize(super(action_name))
+          Hanami::CygUtils::String.pluralize(super(action_name))
         end
       end
 

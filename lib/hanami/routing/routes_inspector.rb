@@ -1,4 +1,4 @@
-require 'hanami/utils/path_prefix'
+require 'hanami/cyg_utils/path_prefix'
 
 module Hanami
   module Routing
@@ -136,7 +136,7 @@ module Hanami
       #          | GET, HEAD |      | /api/posts                 | Posts::Index    |
       #          | GET, HEAD |      | /api/second_mount/comments | Comments::Index |
       def to_s(formatter = FORMATTER, base_path = prefix)
-        base_path = Utils::PathPrefix.new(base_path)
+        base_path = CygUtils::PathPrefix.new(base_path)
 
         inspect_routes(formatter, base_path)
           .insert(0, formatter % INSPECTOR_HEADER_HASH + EMPTY_LINE)
@@ -145,7 +145,7 @@ module Hanami
       # Returns a string representation of routes
       #
       # @param formatter [String] the template for the output
-      # @param base_path [Hanami::Utils::PathPrefix] the base path
+      # @param base_path [Hanami::CygUtils::PathPrefix] the base path
       #
       # @return [String] serialized routes from router
       #
@@ -181,7 +181,7 @@ module Hanami
       #
       # @param formatter [String] the template for the output
       # @param route [Hanami::Routing::Route] a route
-      # @param base_path [Hanami::Utils::PathPrefix] the base path
+      # @param base_path [Hanami::CygUtils::PathPrefix] the base path
       #
       # @return [String] serialized route
       #
@@ -204,7 +204,7 @@ module Hanami
       # @param formatter [String] the template for the output
       # @param router [Hanami::Router] a router
       # @param route [Hanami::Routing::Route] a route
-      # @param base_path [Hanami::Utils::PathPrefix] the base path
+      # @param base_path [Hanami::CygUtils::PathPrefix] the base path
       #
       # @return [String] serialized routes from router
       #

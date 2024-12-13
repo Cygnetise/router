@@ -1,4 +1,4 @@
-require 'hanami/utils/class_attribute'
+require 'hanami/cyg_utils/class_attribute'
 require 'hanami/routing/resource/options'
 require 'hanami/routing/resource/action'
 
@@ -13,7 +13,7 @@ module Hanami
     #
     # @see Hanami::Router#resource
     class Resource
-      include Utils::ClassAttribute
+      include CygUtils::ClassAttribute
 
       # @api private
       # @since 0.4.0

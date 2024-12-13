@@ -1,4 +1,4 @@
-require 'hanami/utils/hash'
+require 'hanami/cyg_utils/hash'
 require_relative 'body_parser/class_interface'
 
 module Hanami
@@ -67,7 +67,7 @@ module Hanami
       # @api private
       def _symbolize(body)
         if body.is_a?(Hash)
-          Utils::Hash.deep_symbolize(body)
+          CygUtils::Hash.deep_symbolize(body)
         else
           { FALLBACK_KEY => body }
         end

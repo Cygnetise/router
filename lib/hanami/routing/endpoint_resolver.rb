@@ -1,5 +1,5 @@
-require 'hanami/utils/string'
-require 'hanami/utils/class'
+require 'hanami/cyg_utils/string'
+require 'hanami/cyg_utils/class'
 require 'hanami/routing/endpoint'
 
 module Hanami
@@ -192,7 +192,7 @@ module Hanami
 
       # @api private
       def constantize(string)
-        klass = Utils::Class.load!(string, @namespace)
+        klass = CygUtils::Class.load!(string, @namespace)
         if klass.respond_to?(:call)
           Endpoint.new(klass)
         else
@@ -204,7 +204,7 @@ module Hanami
 
       # @api private
       def classify(string)
-        Utils::String.transform(string, :underscore, :classify)
+        CygUtils::String.transform(string, :underscore, :classify)
       end
 
       private
